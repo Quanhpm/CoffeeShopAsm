@@ -3,19 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/web/login.jsp</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/web/error.jsp</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/web/header.jsp</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/web/menu.jsp</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/web/home.jsp</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/controllers/ManagerController.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/dao/ProductDAO.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/web/updateProduct.jsp</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/web/manage.jsp</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/controllers/LoginController.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/dto/ProductDTO.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/web/register.jsp</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/controllers/LogoutController.java</file>
+            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/src/java/controllers/CategoryController.java</file>
         </group>
     </open-files>
 </project-private>

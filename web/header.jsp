@@ -89,19 +89,19 @@
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item"><a class="nav-link" href="home.jsp">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="menu">Menu</a></li>
+                        <li class="nav-item"><a href="${pageContext.request.contextPath}/category?categoryId=0" class="nav-link">Menu</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Gift Cards</a></li>
                     </ul>
-                    
+
                     <!-- Search Form -->
-                    <form action="MainController" method="get" class="search-form me-3">
-                        <input type="text" class="form-control" name="txtSearchValue" placeholder="Search..." value="${param.txtSearchValue}">
+                    <form action="search" method="get" class="search-form me-3">
+                        <input type="text" class="form-control" name="search" placeholder="Search..." value="${param.txtSearchValue}">
                         <button type="submit" class="search-button" name="btAction" value="Search">
                             <i class="bi bi-search"></i>
                         </button>
                     </form>
                 </div>
-                
+
                 <div class="d-flex align-items-center">
                     <span class="me-3">
                         <i class="bi bi-cart"></i> <a href="cart.jsp" class="text-dark text-decoration-none">Cart</a>
