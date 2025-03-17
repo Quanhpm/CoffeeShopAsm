@@ -35,23 +35,19 @@ public class ProductListController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-try {
-    response.setContentType("text/html;charset=UTF-8");
-    
-    
-    ProductDAO productDAO = new ProductDAO();
-    
-    
-    List<ProductDTO> list = productDAO.select();
-    
-    
-    request.setAttribute("listProduct", list);
-    
-    
-    request.getRequestDispatcher("menu.jsp").forward(request, response);
-} catch (Exception ex) {
-    System.out.println("ErrorMessage: " + ex.getMessage());
-}
+        try {
+            response.setContentType("text/html;charset=UTF-8");
+
+            ProductDAO productDAO = new ProductDAO();
+
+            List<ProductDTO> list = productDAO.select();
+
+            request.setAttribute("productList", list);
+
+            request.getRequestDispatcher("menu.jsp").forward(request, response);
+        } catch (Exception ex) {
+            System.out.println("ErrorMessage: " + ex.getMessage());
+        }
 
     }
 
@@ -67,6 +63,7 @@ try {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         processRequest(request, response);
     }
 

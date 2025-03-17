@@ -6,6 +6,8 @@ import utils.DBUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ProductDAO {
@@ -254,6 +256,21 @@ public class ProductDAO {
 
         con.close();
         return list;
+    }
+
+    public List<ProductDTO> getProductsSortedByPrice(boolean ascending) throws SQLException, ClassNotFoundException {
+        List<ProductDTO> productList = select(); // Lấy danh sách sản phẩm từ database
+
+        // Kiểm tra danh sách không rỗng
+        if (productList != null && !productList.isEmpty()) {
+            // Sắp xếp danh sách theo giá
+            productList.sort(Comparator.comparingDouble(ProductDTO::getPrice));
+            if (!ascending) {
+                Collections.reverse(productList); // Đảo ngược danh sách nếu cần sắp xếp giảm dần
+            }
+        }
+
+        return productList;
     }
 
 }

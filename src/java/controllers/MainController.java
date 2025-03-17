@@ -24,33 +24,30 @@ public class MainController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
     private static final String MENU_CTRL = "menu";
-    private static final String LOGIN_CTRL = "login";  
-    private static final String LOGIN_SUBMIT = "login_submit";  
+    private static final String LOGIN_CTRL = "login";
+    private static final String LOGIN_SUBMIT = "login_submit";
     private static final String LOGOUT_CTRL = "logout";
     private static final String REGISTER_CTRL = "register";
-    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String url="";
+            String url = "";
             try {
 
                 String action = request.getParameter("action");
-System.out.println("Action: " + action);
+                System.out.println("Action: " + action);
 
                 if (action.equals("login")) {
                     url = LOGIN_CTRL;
                 } else if (action.equals("logout")) {
                     url = LOGOUT_CTRL;
-            } else if (action.equals("register  ")) {
-                url = REGISTER_CTRL;
-                }
-                    else if (action.equals("login_submit")) {
+                } else if (action.equals("register  ")) {
+                    url = REGISTER_CTRL;
+                } else if (action.equals("login_submit")) {
                     url = LOGIN_CTRL;
-                }
-                else if (action.equals("menu")){
+                } else if (action.equals("menu")) {
                     url = MENU_CTRL;
                 }
 

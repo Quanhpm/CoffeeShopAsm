@@ -68,9 +68,20 @@
             </div>
 
             <!-- Product Grid -->
-            <h2>${categoryName}</h2>
+            <h2>${sessionScope.categoryName}</h2>
+            <div class="container mt-3">
+                <div class="d-flex justify-content-end mb-3">
+                    <a href="sort?sortOrder=asc&categoryId=${categoryId}&categoryName=${categoryName}" class="btn btn-outline-success">
+                        Giá tăng dần ↑
+                    </a>
+                    <a href="sort?sortOrder=desc&categoryId=${categoryId}&categoryName=${categoryName}" class="btn btn-outline-danger ms-2">
+                        Giá giảm dần ↓
+                    </a>
+                </div>
+            </div>
+
             <div class="product-grid">
-                <c:forEach var="product" items="${listProduct}">
+                <c:forEach var="product" items="${productList}">
                     <div class="product-card">
                         <img src="<c:url value="/products/${product.id}.jpg" />" alt="Product" class="product-image"/>
                         <button class="favorite-btn">
@@ -86,6 +97,7 @@
                             </a>
                         </div>
                     </div>
+
                 </c:forEach>
             </div>
         </div>
