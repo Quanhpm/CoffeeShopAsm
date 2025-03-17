@@ -5,11 +5,13 @@
  */
 package controllers;
 
-import dao.ProductDAO;
-import dto.ProductDTO;
+import dao.AccountDAO;
+import dto.AccountDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "ProductListController", urlPatterns = {"/menu"})
-public class ProductListController extends HttpServlet {
+@WebServlet(name = "RegisterController", urlPatterns = {"/register"})
+public class RegisterController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,27 +35,41 @@ public class ProductListController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-try {
-    response.setContentType("text/html;charset=UTF-8");
-    
-    
-    ProductDAO productDAO = new ProductDAO();
-    
-    
-    List<ProductDTO> list = productDAO.select();
-    
-    
-    request.setAttribute("listProduct", list);
-    
-    
-    request.getRequestDispatcher("menu.jsp").forward(request, response);
-} catch (Exception ex) {
-    System.out.println("ErrorMessage: " + ex.getMessage());
-}
+            
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            String email = request.getParameter("email");
 
-    }
+AccountDAO accountDAO = new AccountDAO();
+            
+            try {
+               
+                if (accountDAO.isUsernameExist(username)) {
+                  
+                    response.sendRedirect("register.jsp?error=username_exists");
+                    return;
+                }
+
+                
+                AccountDTO account = new AccountDTO();
+                account.setUserName(username);
+                account.setPassword(password);
+                account.setEmail(email);
+                account.setRole("customer");
+
+                
+                accountDAO.create(account);
+
+              
+                response.sendRedirect("login.jsp");  
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+                response.sendRedirect("register.jsp?error=true"); 
+            }
+        }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -67,7 +83,11 @@ try {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -81,7 +101,11 @@ try {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

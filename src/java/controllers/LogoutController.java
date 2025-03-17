@@ -37,15 +37,12 @@ public class LogoutController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         try {
-            // Lấy session hiện tại, nếu có
             HttpSession session = request.getSession(false);
             
             if (session != null) {
-                // Hủy session
                 session.invalidate();
             }
 
-            // Chuyển hướng về trang đăng nhập
             response.sendRedirect("menu");
         } catch (Exception ex) {
             Logger.getLogger(LogoutController.class.getName()).log(Level.ALL.SEVERE, null, ex);

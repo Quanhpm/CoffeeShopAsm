@@ -11,18 +11,20 @@ public class ProductDTO {
     private DescriptionDTO description; 
     private int categoryId;
     private int toppingId;
+    private String image;  // Đổi tên thành image
 
     // Constructors
     public ProductDTO() {
     }
 
-    public ProductDTO(int id, String name, float price, DescriptionDTO description, int categoryId, int toppingId) {
+    public ProductDTO(int id, String name, float price, DescriptionDTO description, int categoryId, int toppingId, String image) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
         this.categoryId = categoryId;
         this.toppingId = toppingId;
+        this.image = image;  // Khởi tạo image
     }
 
     // Getter and Setter methods
@@ -74,6 +76,14 @@ public class ProductDTO {
         this.toppingId = toppingId;
     }
 
+    public String getImage() {
+        return image;  // Getter for image
+    }
+
+    public void setImage(String image) {
+        this.image = image;  // Setter for image
+    }
+
     @Override
     public String toString() {
         return "ProductDTO{" +
@@ -83,6 +93,7 @@ public class ProductDTO {
                 ", description=" + description +
                 ", categoryId=" + categoryId +
                 ", toppingId=" + toppingId +
+                ", image='" + image + '\'' +  // Cập nhật toString
                 '}';
     }
 }

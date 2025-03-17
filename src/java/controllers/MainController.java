@@ -27,6 +27,8 @@ public class MainController extends HttpServlet {
     private static final String LOGIN_CTRL = "login";  
     private static final String LOGIN_SUBMIT = "login_submit";  
     private static final String LOGOUT_CTRL = "logout";
+    private static final String REGISTER_CTRL = "register";
+    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,7 +36,7 @@ public class MainController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String url="";
             try {
-//                your code here
+
                 String action = request.getParameter("action");
 System.out.println("Action: " + action);
 
@@ -42,12 +44,8 @@ System.out.println("Action: " + action);
                     url = LOGIN_CTRL;
                 } else if (action.equals("logout")) {
                     url = LOGOUT_CTRL;
-//            } else if (action.equals("create")) {
-//                HttpSession sess = request.getSession();
-//                AccountDTO foundUser = (AccountDTO) sess.getAttribute("userInfo");
-//                if (foundUser.getRoleID().equals("US")) {
-//                    url = "login.jsp";
-//                }
+            } else if (action.equals("register  ")) {
+                url = REGISTER_CTRL;
                 }
                     else if (action.equals("login_submit")) {
                     url = LOGIN_CTRL;

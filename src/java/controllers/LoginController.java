@@ -33,7 +33,7 @@ public class LoginController extends HttpServlet {
         String userName = request.getParameter("userName");
         String password = request.getParameter("Password");
 
-        String url = "error.jsp"; // Default to error page
+        String url = "error.jsp";  // Default error page
 
         try {
             AccountDAO accountDAO = new AccountDAO();
@@ -48,9 +48,19 @@ public class LoginController extends HttpServlet {
                 }
 
                 if (foundAccount != null) {
+                    // Store user info in the session
                     HttpSession session = request.getSession();
-                    session.setAttribute("username", foundAccount.getUserName()); // **Lưu tên người dùng vào session**
-                    response.sendRedirect("menu");
+                    session.setAttribute("username", foundAccount.getUserName());  // Store the username in session
+                    session.setAttribute("role", foundAccount.getRole());  // Store the role in session
+
+                    // Check if the role is admin and forward to the correct page
+                    if ("admin".equals(foundAccount.getRole())) {
+                        // Forward to the manager page (admin product management)
+                        response.sendRedirect("manager");  // Redirect to the manager page
+                    } else {
+                        // Forward to a normal user menu (adjust as necessary for customers)
+                        response.sendRedirect("menu");  // Redirect to user menu
+                    }
                     return;
                 } else {
                     url = "login.jsp";
@@ -84,6 +94,7 @@ public class LoginController extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "LoginController";
     }
 }
+
