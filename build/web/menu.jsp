@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Product List Page</title>
+        <title>Passio</title>
         <!-- Bootstrap 5 CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- Font Awesome -->
@@ -23,6 +23,18 @@
             .product-name { font-weight: 500; margin-bottom: 0.5rem; }
             .product-price { color: #1e3932; font-weight: 600; }
             .add-to-cart { width: 30px; height: 30px; border: 1px solid #1e3932; color: #1e3932; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; float: right; }
+            .product-image {
+                width: 100%;
+                height: 200px; /* Đặt chiều cao cố định */
+                object-fit: cover; /* Cắt ảnh để vừa khung mà không bị méo */
+                border-radius: 8px; /* Bo góc nhẹ nếu cần */
+            }
+            .banner-item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
         </style>
     </head>
     <body>
@@ -58,8 +70,9 @@
             <!-- Product Grid -->
             <h2>${categoryName}</h2>
             <div class="product-grid">
-                <c:forEach var="product" items="${productList}">
+                <c:forEach var="product" items="${listProduct}">
                     <div class="product-card">
+                        <img src="<c:url value="/products/${product.id}.jpg" />" alt="Product" class="product-image"/>
                         <button class="favorite-btn">
                             <i class="far fa-heart"></i>
                         </button>

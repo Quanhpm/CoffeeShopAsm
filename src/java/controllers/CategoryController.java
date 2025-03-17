@@ -49,25 +49,25 @@ public class CategoryController extends HttpServlet {
 
             // Tạo đối tượng ProductDAO
             ProductDAO productDAO = new ProductDAO();
-            List<ProductDTO> productList;
+            List<ProductDTO> listProduct;
 
             // Lấy danh sách sản phẩm dựa vào categoryId
             if (categoryId == 0) {
                 // Nếu categoryId = 0 (All Products), lấy tất cả sản phẩm
-                productList = productDAO.select();
+                listProduct = productDAO.select();
             } else {
                 // Ngược lại, lấy sản phẩm theo categoryId
-                productList = productDAO.getProductsByCategoryId(categoryId);
+                listProduct = productDAO.getProductsByCategoryId(categoryId);
             }
 
             // Debug: In ra số lượng sản phẩm tìm thấy
-            System.out.println("Found " + productList.size() + " products for category ID: " + categoryId);
+            System.out.println("Found " + listProduct.size() + " products for category ID: " + categoryId);
 
             // Lấy tên category từ ID
             String categoryName = CATEGORY_NAMES.getOrDefault(categoryId, "Unknown");
 
             // Lưu thông tin vào request attributes để JSP có thể sử dụng
-            request.setAttribute("productList", productList);
+            request.setAttribute("listProduct", listProduct);
             request.setAttribute("categoryId", categoryId);
             request.setAttribute("categoryName", categoryName);
             request.setAttribute("allCategories", CATEGORY_NAMES);
