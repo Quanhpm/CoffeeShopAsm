@@ -1,0 +1,32 @@
+# Các thư mục của NetBeans
+/.nbproject/
+/build/
+/dist/
+/nbbuild/
+/nbproject/private/
+/target/
+
+# Các file log
+*.log
+
+# Các file của hệ thống
+.DS_Store
+Thumbs.db
+
+# Các file của IDE khác (Nếu dùng các IDE khác ngoài NetBeans)
+.idea/
+.vscode/
+
+# Các file tạm của Java
+*.class
+*.jar
+*.war
+*.ear
+
+# File cấu hình của hệ điều hành
+*.bak
+*.swp
+
+# File Maven (nếu có)
+.mvn/
+target/
