@@ -1,75 +1,101 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controllers;
 
 import dao.ProductDAO;
 import dto.ProductDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Admin
- */
-
-//quanhpam
-//quanh
 @WebServlet(name = "CategoryController", urlPatterns = {"/category"})
 public class CategoryController extends HttpServlet {
-    private static final long serialVersionUID = 1L;
     
-    private ProductDAO productDAO;
-
-    @Override
-    public void init() throws ServletException {
-        // Khởi tạo ProductDAO
-        productDAO = new ProductDAO();
+    // Map để lưu trữ tên category theo ID
+    private static final Map<Integer, String> CATEGORY_NAMES = new HashMap<>();
+    
+    static {
+        CATEGORY_NAMES.put(1, "Trà");
+        CATEGORY_NAMES.put(2, "Cà Phê");
+        CATEGORY_NAMES.put(3, "Đá Xay & Sinh Tố");
+        CATEGORY_NAMES.put(4, "Nước Ép");
+        CATEGORY_NAMES.put(0, "All Products");
     }
-    // abc
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Lấy category từ tham số URL
-        String category = request.getParameter("category");
-
-        if (category == null || category.isEmpty()) {
-            response.sendRedirect("index.jsp"); // Nếu không có category, chuyển hướng về trang chủ
-            return;
-        }
-
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        
         try {
-            // Lấy danh sách sản phẩm theo category
-            List<ProductDTO> products = productDAO.getProductsByCategory(category);
-
-            // Gửi danh sách sản phẩm vào request
-            request.setAttribute("category", category);
-            request.setAttribute("products", products);
-
-            // Chuyển hướng tới JSP để hiển thị sản phẩm
-            RequestDispatcher dispatcher = request.getRequestDispatcher("categoryPage.jsp");
-            dispatcher.forward(request, response);
+            // Lấy categoryId từ request
+            String categoryIdStr = request.getParameter("categoryId");
+            int categoryId = 1; // Mặc định là category 1 (Trà)
+            
+            // Nếu có categoryId được gửi lên, chuyển đổi thành số nguyên
+            if (categoryIdStr != null && !categoryIdStr.isEmpty()) {
+                try {
+                    categoryId = Integer.parseInt(categoryIdStr);
+                } catch (NumberFormatException e) {
+                    // Nếu không phải số, giữ nguyên giá trị mặc định
+                    System.out.println("Invalid categoryId format: " + categoryIdStr);
+                }
+            }
+            
+            // Tạo đối tượng ProductDAO
+            ProductDAO productDAO = new ProductDAO();
+            List<ProductDTO> productList;
+            
+            // Lấy danh sách sản phẩm dựa vào categoryId
+            if (categoryId == 0) {
+                // Nếu categoryId = 0 (All Products), lấy tất cả sản phẩm
+                productList = productDAO.select();
+            } else {
+                // Ngược lại, lấy sản phẩm theo categoryId
+                productList = productDAO.getProductsByCategoryId(categoryId);
+            }
+            
+            // Debug: In ra số lượng sản phẩm tìm thấy
+            System.out.println("Found " + productList.size() + " products for category ID: " + categoryId);
+            
+            // Lấy tên category từ ID
+            String categoryName = CATEGORY_NAMES.getOrDefault(categoryId, "Unknown");
+            
+            // Lưu thông tin vào request attributes để JSP có thể sử dụng
+            request.setAttribute("productList", productList);
+            request.setAttribute("categoryId", categoryId);
+            request.setAttribute("categoryName", categoryName);
+            request.setAttribute("allCategories", CATEGORY_NAMES);
+            
+            // Forward request đến trang menu.jsp
+            request.getRequestDispatcher("/menu.jsp").forward(request, response);
+            
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error while fetching products");
+            request.setAttribute("errorMessage", "Có lỗi xảy ra khi truy xuất dữ liệu: " + e.getMessage());
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
         }
     }
 
     @Override
-    public void destroy() {
-        // Hủy tài nguyên nếu cần thiết
-        productDAO = null;
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    public String getServletInfo() {
+        return "CategoryController Servlet handles displaying products by category";
     }
 }

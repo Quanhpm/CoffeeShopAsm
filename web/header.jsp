@@ -74,7 +74,6 @@
                 border-color: #999;
             }
             body {
-                padding-top: 70px;
             }
         </style>
     </head>

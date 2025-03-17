@@ -175,19 +175,18 @@ public class ProductDAO {
     }
     
     
-    public List<ProductDTO> getProductsByCategory(String category) throws SQLException, ClassNotFoundException {
+public List<ProductDTO> getProductsByCategoryId(int categoryId) throws SQLException, ClassNotFoundException {
     List<ProductDTO> list = new ArrayList<>();
     Connection con = DBUtils.getConnection();
     
-    // Lấy ID của category (giả sử bạn có một bảng Category với categoryId và name)
     String query = "SELECT p.productId, p.productName, p.productPrice, p.productImage, " +
                    "p.categoryId, p.toppingId, d.title, d.text " +
                    "FROM Product p " +
                    "LEFT JOIN Description d ON p.productId = d.productId " +
-                   "WHERE p.categoryId = (SELECT categoryId FROM Category WHERE categoryName = ?)";
+                   "WHERE p.categoryId = ?";
 
     PreparedStatement stm = con.prepareStatement(query);
-    stm.setString(1, category);
+    stm.setInt(1, categoryId);
 
     ResultSet rs = stm.executeQuery();
 
