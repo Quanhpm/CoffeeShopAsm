@@ -79,7 +79,11 @@
                     </a>
                 </div>
             </div>
-
+            <c:if test="${not empty errorMessage}">
+                <div class="alert alert-info">
+                    ${errorMessage}
+                </div>
+            </c:if>
             <div class="product-grid">
                 <c:forEach var="product" items="${productList}">
                     <div class="product-card">

@@ -3,18 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/web/manage.jsp</file>
             <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/src/java/dao/ProductDAO.java</file>
-            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/src/java/controllers/CategoryController.java</file>
-            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/src/java/controllers/ManagerController.java</file>
-            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/src/java/controllers/MainController.java</file>
             <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/src/java/controllers/SearchController.java</file>
             <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/web/menu.jsp</file>
             <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/src/java/controllers/SortController.java</file>
-            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/web/home.jsp</file>
-            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/src/java/dto/ProductDTO.java</file>
-            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/src/java/dao/AccountDAO.java</file>
-            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/web/WEB-INF/web.xml</file>
-            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/src/java/controllers/ProductListController.java</file>
+            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/src/java/controllers/LoginController.java</file>
             <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/web/login.jsp</file>
         </group>
     </open-files>

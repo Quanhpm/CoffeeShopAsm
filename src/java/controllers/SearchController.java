@@ -29,14 +29,20 @@ public class SearchController extends HttpServlet {
             throws ServletException, IOException {
         String keyword = request.getParameter("search");
         ProductDAO productDAO = new ProductDAO();
-
         try {
             List<ProductDTO> searchResults = productDAO.searchProducts(keyword);
             request.setAttribute("productList", searchResults);
+
+            // Check if the search results are empty
+            if (searchResults == null || searchResults.isEmpty()) {
+                request.setAttribute("errorMessage", "No products found matching your search.");
+            }
+
             request.getRequestDispatcher("menu.jsp").forward(request, response);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-            response.sendRedirect("error.jsp");
+            request.setAttribute("errorMessage", "An error occurred while searching for products.");
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }
 
