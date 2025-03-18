@@ -89,7 +89,7 @@
                         </button>
                         <div class="product-name">${product.name}</div>
                         <div class="product-price">
-                            $<fmt:formatNumber value="${product.price}" pattern="#,##0"/>
+                            <fmt:formatNumber value="${product.price}" pattern="#,##0"/> ₫
                             <a href="<c:url value="/cart?action=add&id=${product.id}&quantity=1" />">
                                 <button class="add-to-cart">
                                     <i class="fas fa-plus"></i>
