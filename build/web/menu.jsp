@@ -68,7 +68,7 @@
             </div>
 
             <!-- Product Grid -->
-            <h2>${sessionScope.categoryName}</h2>
+            <h2>${categoryName}</h2>
             <div class="container mt-3">
                 <div class="d-flex justify-content-end mb-3">
                     <a href="sort?sortOrder=asc&categoryId=${categoryId}&categoryName=${categoryName}" class="btn btn-outline-success">
