@@ -24,35 +24,50 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "SortController", urlPatterns = {"/sort"})
 public class SortController extends HttpServlet {
 
-    private ProductDAO productDAO = new ProductDAO(); // Giả sử có DAO để lấy dữ liệu
+    private ProductDAO productDAO = new ProductDAO(); // DAO để lấy dữ liệu sản phẩm
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
         try {
-            // Lấy tham số sortOrder từ URL (asc hoặc desc)
-            String sortOrder = request.getParameter("sortOrder");
+            // Lấy tham số sắp xếp
+            String sortBy = request.getParameter("sortBy"); // "price"
+            String sortOrder = request.getParameter("sortOrder"); // "asc" hoặc "desc"
             boolean ascending = "asc".equalsIgnoreCase(sortOrder);
 
-            // Lấy danh sách sản phẩm đã sắp xếp
-            List<ProductDTO> sortedProducts = productDAO.getProductsSortedByPrice(ascending);
-
-            // Lấy categoryId từ request (nếu có)
+            // Lấy categoryId từ request
             String categoryIdStr = request.getParameter("categoryId");
             Integer categoryId = (categoryIdStr != null && !categoryIdStr.isEmpty()) ? Integer.parseInt(categoryIdStr) : 0;
 
-// Lấy categoryName từ session nếu không có trong request
+            // Lấy categoryName từ session nếu không có trong request
             String categoryName = request.getParameter("categoryName");
             if (categoryName == null) {
                 categoryName = (String) request.getSession().getAttribute("categoryName");
             }
 
-// Lưu categoryName vào session và request để không bị mất
+            // Lấy từ khóa tìm kiếm nếu có
+            String searchQuery = request.getParameter("searchQuery");
+
+            // Lấy danh sách sản phẩm dựa trên tìm kiếm hoặc danh mục
+            List<ProductDTO> productList;
+            if (searchQuery != null && !searchQuery.isEmpty()) {
+                productList = productDAO.searchProducts(searchQuery);
+            } else {
+                productList = productDAO.getProductsByCategoryId(categoryId);
+            }
+
+            // Nếu sắp xếp theo giá, chỉ sắp xếp danh sách đã lọc
+            if ("price".equalsIgnoreCase(sortBy)) {
+                productList = productDAO.sortProductListByPrice(productList, ascending);
+            }
+
+            // Lưu dữ liệu vào request
             request.getSession().setAttribute("categoryName", categoryName);
             request.setAttribute("categoryName", categoryName);
             request.setAttribute("categoryId", categoryId);
+            request.setAttribute("productList", productList);
 
-            // Lưu danh sách vào request và chuyển hướng đến trang JSP
-            request.setAttribute("productList", sortedProducts);
+            // Chuyển hướng đến menu.jsp
             RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
             dispatcher.forward(request, response);
         } catch (Exception e) {
@@ -60,5 +75,5 @@ public class SortController extends HttpServlet {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Lỗi khi tải danh sách sản phẩm.");
         }
     }
-
 }
+

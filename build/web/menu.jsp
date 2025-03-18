@@ -69,16 +69,25 @@
 
             <!-- Product Grid -->
             <h2>${categoryName}</h2>
+            <!-- Nút sắp xếp sản phẩm -->
             <div class="container mt-3">
                 <div class="d-flex justify-content-end mb-3">
-                    <a href="sort?sortOrder=asc&categoryId=${categoryId}&categoryName=${categoryName}" class="btn btn-outline-success">
-                        Giá tăng dần ↑
+                    <span class="me-2">Sắp xếp theo:</span>
+
+                    <!-- Sắp xếp theo giá tăng dần -->
+                    <a href="category?categoryId=${categoryId}&sortBy=price&sortOrder=asc" 
+                       class="btn btn-outline-success ms-2 ${sortBy == 'price' && sortOrder == 'asc' ? 'active' : ''}">
+                        Giá thấp ↑
                     </a>
-                    <a href="sort?sortOrder=desc&categoryId=${categoryId}&categoryName=${categoryName}" class="btn btn-outline-danger ms-2">
-                        Giá giảm dần ↓
+
+                    <!-- Sắp xếp theo giá giảm dần -->
+                    <a href="category?categoryId=${categoryId}&sortBy=price&sortOrder=desc" 
+                       class="btn btn-outline-danger ms-2 ${sortBy == 'price' && sortOrder == 'desc' ? 'active' : ''}">
+                        Giá cao ↓
                     </a>
                 </div>
             </div>
+
             <c:if test="${not empty errorMessage}">
                 <div class="alert alert-info">
                     ${errorMessage}

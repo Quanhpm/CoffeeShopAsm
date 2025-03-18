@@ -258,18 +258,13 @@ public class ProductDAO {
         return list;
     }
 
-    public List<ProductDTO> getProductsSortedByPrice(boolean ascending) throws SQLException, ClassNotFoundException {
-        List<ProductDTO> productList = select(); // Lấy danh sách sản phẩm từ database
-
-        // Kiểm tra danh sách không rỗng
+    public List<ProductDTO> sortProductListByPrice(List<ProductDTO> productList, boolean ascending) {
         if (productList != null && !productList.isEmpty()) {
-            // Sắp xếp danh sách theo giá
             productList.sort(Comparator.comparingDouble(ProductDTO::getPrice));
             if (!ascending) {
-                Collections.reverse(productList); // Đảo ngược danh sách nếu cần sắp xếp giảm dần
+                Collections.reverse(productList); // Đảo ngược nếu sắp xếp giảm dần
             }
         }
-
         return productList;
     }
 
