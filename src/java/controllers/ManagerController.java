@@ -1,8 +1,10 @@
 package controllers;
 
+import dao.OrderDAO;
 import dao.ProductDAO;
 import dto.ProductDTO;
 import dto.DescriptionDTO;
+import dto.OrderDTO;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,9 +20,11 @@ import javax.servlet.RequestDispatcher;
 public class ManagerController extends HttpServlet {
 
     private ProductDAO productDAO;
+    private OrderDAO orderDAO;
 
     public ManagerController() {
         this.productDAO = new ProductDAO();
+        this.orderDAO = new OrderDAO();
     }
 
     @Override
@@ -38,10 +42,27 @@ public class ManagerController extends HttpServlet {
         }
 
         try {
+            
             // Fetch all products and display them
-            List<ProductDTO> productList = productDAO.select();
+            String page=request.getParameter("page");
+            if(page == null){
+                       List<ProductDTO> productList = productDAO.select();
             request.setAttribute("productList", productList);
-            request.getRequestDispatcher("manage.jsp").forward(request, response);
+            request.setAttribute("page", "manage.jsp");
+            request.getRequestDispatcher("menuAdmin.jsp").forward(request, response);
+            }
+           else if("product".equals(page)){
+                       List<ProductDTO> productList = productDAO.select();
+            request.setAttribute("productList", productList);
+            request.setAttribute("page", "manage.jsp");
+            request.getRequestDispatcher("menuAdmin.jsp").forward(request, response);
+            }else if("order".equals(page)){
+                List<OrderDTO> orderList = orderDAO.select();
+            request.setAttribute("orderList", orderList);
+            request.setAttribute("page", "orderManagement.jsp");
+            request.getRequestDispatcher("menuAdmin.jsp").forward(request, response);
+            }
+     
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             response.sendRedirect("error.jsp");
