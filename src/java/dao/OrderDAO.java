@@ -21,6 +21,7 @@ import utils.DBUtils;
  * @author Asus
  */
 public class OrderDAO {
+
     public List<OrderDTO> select() throws SQLException, ClassNotFoundException {
         String name = "";
         List<OrderDTO> list = null;
@@ -79,11 +80,11 @@ public class OrderDAO {
     }
 
     public OrderDTO read(String id) throws SQLException, ClassNotFoundException {
-        OrderDTO product = null;
+        OrderDTO order = new OrderDTO();
         //Tạo kết nối db
         Connection con = DBUtils.getConnection();
         //Tạo đối tượng Statement
-        PreparedStatement stm = con.prepareStatement("Select * from Order where id=?");
+        PreparedStatement stm = con.prepareStatement("Select * from [dbo].[Order] where orderId=?");
         //Gán giá trị cho các tham số
         stm.setString(1, id);
 
@@ -91,30 +92,30 @@ public class OrderDAO {
         ResultSet rs = stm.executeQuery();
         if (rs.next()) {
             //Đọc data trong table Toy để vào đối tượng toy
-          OrderDTO order = new OrderDTO();
+
             order.setOrderId(rs.getInt("orderId"));
             order.setTotalPrice(rs.getFloat("totalPrice"));
-            order.setStatus(rs.getNString("status"));
+            order.setStatus(rs.getString("status"));
             order.setCreatedAt(rs.getDate("createdAt"));
             order.setAccountId(rs.getInt("accountId"));
 
         }
         //Đóng kết nối db
         con.close();
-        return product;
+        return order;
     }
 
     public void update(OrderDTO order) throws SQLException, ClassNotFoundException {
         //Tạo kết nối db
         Connection con = DBUtils.getConnection();
         //Tạo đối tượng Statement
-        PreparedStatement stm = con.prepareStatement("update Order set totalprice=?, status=?, createdAt=?, accountId=? where orderId=?");
+        PreparedStatement stm = con.prepareStatement("update [dbo].[Order] set totalprice=?, status=?, createdAt=? where orderId=?");
         //Gán giá trị cho các tham số
-         stm.setFloat(1, order.getTotalPrice());
+        stm.setFloat(1, order.getTotalPrice());
         stm.setString(2, order.getStatus());
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         stm.setString(3, sdf.format(order.getCreatedAt()));
-        stm.setInt(4, order.getAccountId());
+        stm.setInt(4, order.getOrderId());
         //Thực thi lệnh sql
         int count = stm.executeUpdate();
         //Đóng kết nối db

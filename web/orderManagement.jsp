@@ -194,7 +194,7 @@
                                         <td class="text-center action-column">
                                             <div class="btn-group">
                                                 <!-- Update Order Form -->
-                                                <form action="manager" method="POST">
+                                                <form action="OrderController" method="POST">
                                                     <input type="hidden" name="action" value="showUpdateForm"/>
                                                     <input type="hidden" name="orderId" value="${order.orderId}"/>
                                                     <button type="submit" class="btn-update">

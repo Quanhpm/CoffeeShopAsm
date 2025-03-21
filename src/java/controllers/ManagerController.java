@@ -95,6 +95,11 @@ response.setCharacterEncoding("UTF-8");
                 deleteProduct(request);
             } else if ("showUpdateForm".equals(action)){
                 showUpdateForm(request,response);
+           }else if("order".equals(action)){
+                List<OrderDTO> orderList = orderDAO.select();
+            request.setAttribute("orderList", orderList);
+            request.setAttribute("page", "orderManagement.jsp");
+            request.getRequestDispatcher("menuAdmin.jsp").forward(request, response);
             }
 
             // Redirect back to the manager page after action
