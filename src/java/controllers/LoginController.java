@@ -54,6 +54,7 @@ public class LoginController extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("username", foundAccount.getUserName());
                     session.setAttribute("role", foundAccount.getRole());
+                    session.setAttribute("user", foundAccount);
 
                     // Xử lý Remember Me
                     if (rememberMe != null) {
