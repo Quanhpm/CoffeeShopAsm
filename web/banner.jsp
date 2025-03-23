@@ -153,7 +153,7 @@
                     <button class="btn btn-learn-more">LEARN MORE</button>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <img src="https://img.freepik.com/premium-psd/paper-coffee-cup-png_679658-58074.jpgs" alt="Coffee Cup" class="coffee-cup img-fluid">
+                    <img src="./products/matcha.png" alt="Coffee Cup" class="coffee-cup img-fluid">
                 </div>
             </div>
         </div>
