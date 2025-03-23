@@ -31,7 +31,7 @@
         </style>
     </head>
     <body>
-                <%@ include file="header.jsp" %>
+        <%@ include file="header.jsp" %>
 
         <div class="container mt-4">
             <h1 class="mb-4">Giỏ hàng của bạn</h1>
@@ -79,9 +79,9 @@
                                              alt="${item.product.name}" class="product-image">
                                     </td>
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/product?id=${item.product.id}">
-                                            ${item.product.name}
-                                        </a>
+
+                                        ${item.product.name}
+
                                     </td>
                                     <td>
                                         <fmt:formatNumber value="${item.product.price}" type="currency" currencySymbol="₫" maxFractionDigits="0"/>

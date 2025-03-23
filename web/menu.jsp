@@ -105,11 +105,12 @@
                             <fmt:formatNumber value="${product.price}" pattern="#,##0"/> ₫
 
                             <!-- Button trigger modal -->
-                            <a href="<c:url value="/cart?action=add&id=${product.id}&quantity=1" />">
-                            <button type="button" class="add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                             </a>  
+                            <a href="<c:url value="/cart?action=add&id=${product.id}&quantity=1" />" 
+                               onclick="return checkLogin(event, ${not empty sessionScope.username})">
+                                <button type="button" class="add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </a>
 
 
                         </div>
@@ -121,4 +122,16 @@
         <!-- Bootstrap 5 JS Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
+    <script>
+                                   // Hàm kiểm tra đăng nhập và hiển thị thông báo
+                                   function checkLogin(event, isLoggedIn) {
+                                       if (!isLoggedIn) {
+                                           event.preventDefault();
+                                           alert("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng");
+                                           window.location.href = 'login';
+                                           return false;
+                                       }
+                                       return true;
+                                   }
+    </script>
 </html>

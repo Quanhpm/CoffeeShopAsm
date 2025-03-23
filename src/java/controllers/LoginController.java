@@ -79,11 +79,18 @@ public class LoginController extends HttpServlet {
                         response.addCookie(rememberCookie);
                     }
 
-                    // Chuyển hướng theo vai trò
-                    if ("admin".equals(foundAccount.getRole())) {
-                        response.sendRedirect("manager");
+                    // Kiểm tra xem có URL redirect không
+                    String redirectURL = (String) session.getAttribute("redirectURL");
+                    if (redirectURL != null) {
+                        session.removeAttribute("redirectURL"); // Xóa URL redirect khỏi session
+                        response.sendRedirect(redirectURL);
                     } else {
-                        response.sendRedirect("menu");
+                        // Chuyển hướng theo vai trò nếu không có URL redirect
+                        if ("admin".equals(foundAccount.getRole())) {
+                            response.sendRedirect("manager");
+                        } else {
+                            response.sendRedirect("menu");
+                        }
                     }
                     return;
                 } else {
@@ -108,17 +115,21 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        // Kiểm tra xem đây có phải là request chuyển hướng từ giỏ hàng không
+        String redirectURL = request.getParameter("redirectURL");
+        if (redirectURL != null) {
+            // Lưu URL chuyển hướng vào session
+            HttpSession session = request.getSession();
+            session.setAttribute("redirectURL", redirectURL);
+        }
+
+        // Hiển thị trang đăng nhập
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    }
-
-    @Override
-    public String getServletInfo() {
-        return "LoginController";
     }
 }
