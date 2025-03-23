@@ -252,13 +252,12 @@
                     <!-- Product 1 -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card product-card">
-                            <img src="https://product.hstatic.net/1000075078/product/1669736835_ca-phe-sua-da_9de0c169c5c74e0c9e3d6d4a8a1c60b1.png" class="card-img-top product-img" alt="Cà Phê Sữa Đá">
+                            <img src="./products/8.jpg" class="card-img-top product-img" alt="Cà Phê Sữa Đá">
                             <div class="card-body">
                                 <h5 class="card-title">Cà Phê Sữa Đá</h5>
                                 <p class="card-text text-muted">Hương vị đậm đà, thơm béo</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="product-price">45.000đ</span>
-                                    <button class="btn btn-order">Đặt hàng</button>
                                 </div>
                             </div>
                         </div>
@@ -267,13 +266,12 @@
                     <!-- Product 2 -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card product-card">
-                            <img src="https://product.hstatic.net/1000075078/product/1669736919_matcha-da-xay_c9a5a8f8b5694f49a8104c88d3b88c0f.png" class="card-img-top product-img" alt="Matcha Đá Xay">
+                            <img src="./products/9.jpg" class="card-img-top product-img" alt="Matcha Đá Xay">
                             <div class="card-body">
                                 <h5 class="card-title">Matcha Đá Xay</h5>
                                 <p class="card-text text-muted">Vị ngọt thanh mát, đậm đà</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="product-price">55.000đ</span>
-                                    <button class="btn btn-order">Đặt hàng</button>
                                 </div>
                             </div>
                         </div>
@@ -282,13 +280,12 @@
                     <!-- Product 3 -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card product-card">
-                            <img src="https://product.hstatic.net/1000075078/product/1669736877_tra-dao-cam-sa_c8a8d2c5c9d14ae4b5a7ec949b8cc5c0.png" class="card-img-top product-img" alt="Trà Đào Cam Sả">
+                            <img src="./products/15.jpg" class="card-img-top product-img" alt="Trà Đào Cam Sả">
                             <div class="card-body">
                                 <h5 class="card-title">Trà Đào Cam Sả</h5>
                                 <p class="card-text text-muted">Vị chua ngọt, thơm mát</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="product-price">49.000đ</span>
-                                    <button class="btn btn-order">Đặt hàng</button>
                                 </div>
                             </div>
                         </div>
@@ -297,13 +294,12 @@
                     <!-- Product 4 -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card product-card">
-                            <img src="https://product.hstatic.net/1000075078/product/1669736956_banh-mi-vn-thit-nguoi_c1a8c2e0e7de4d81b8b2704a9dc8c938.png" class="card-img-top product-img" alt="Bánh Mì Thịt Nguội">
+                            <img src="./products/banhmithinguoi.jpg" class="card-img-top product-img" alt="Bánh Mì Thịt Nguội">
                             <div class="card-body">
                                 <h5 class="card-title">Bánh Mì Thịt Nguội</h5>
                                 <p class="card-text text-muted">Giòn tan, đầy đặn nhân</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="product-price">35.000đ</span>
-                                    <button class="btn btn-order">Đặt hàng</button>
                                 </div>
                             </div>
                         </div>
@@ -317,14 +313,13 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 mb-4 mb-lg-0">
-                        <img src="https://file.hstatic.net/1000075078/file/about_us_desktop_4ff7c3d39c9d4b6685a0505be4a8d467.jpg" alt="Về Passio" class="img-fluid about-img">
+                        <img src="./products/hatcaphe.jpg" alt="Về Passio" class="img-fluid about-img">
                     </div>
                     <div class="col-lg-6">
                         <h2 class="section-title">Câu Chuyện Passio</h2>
                         <p class="about-text">Passio ra đời với sứ mệnh mang đến những trải nghiệm cà phê đặc biệt, nơi mỗi tách cà phê không chỉ là thức uống mà còn là câu chuyện về nguồn gốc, về quá trình và về tình yêu.</p>
                         <p class="about-text">Chúng tôi lựa chọn những hạt cà phê tốt nhất từ các vùng nguyên liệu nổi tiếng, kết hợp với công thức pha chế độc đáo và tình yêu với nghề để tạo nên những thức uống hoàn hảo.</p>
                         <p class="about-text">Tại Passio, chúng tôi không chỉ phục vụ cà phê, mà còn mang đến không gian thư giãn, kết nối và truyền cảm hứng.</p>
-                        <button class="btn btn-learn-more mt-3">TÌM HIỂU THÊM</button>
                     </div>
                 </div>
             </div>
@@ -398,7 +393,7 @@
                             <i class="fas fa-map-marker-alt contact-icon"></i>
                             <div>
                                 <h5>Địa Chỉ</h5>
-                                <p>123 Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh</p>
+                                <p>Đại Học FPT Thành Phố Hồ Chí Minh</p>
                             </div>
                         </div>
                         
@@ -406,7 +401,7 @@
                             <i class="fas fa-phone-alt contact-icon"></i>
                             <div>
                                 <h5>Điện Thoại</h5>
-                                <p>(028) 3823 xxxx</p>
+                                <p>0918 430 153</p>
                             </div>
                         </div>
                         
@@ -414,7 +409,7 @@
                             <i class="fas fa-envelope contact-icon"></i>
                             <div>
                                 <h5>Email</h5>
-                                <p>info@passio.com</p>
+                                <p>quocanhdang02@gmail.com</p>
                             </div>
                         </div>
                         

@@ -149,8 +149,11 @@
             <div class="row banner-content">
                 <div class="col-lg-6">
                     <h1 class="banner-title">IT'S NOT JUST COFFEE,<br>IT'S <span class="brand-name">PASSIO</span></h1>
-                    <p class="banner-text">Lorem ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat.</p>
-                    <button class="btn btn-learn-more">LEARN MORE</button>
+                    <p class="banner-text">Khám phá hương vị đặc trưng từ những hạt cà phê tuyển chọn, được pha chế với tình yêu và sự tận tâm để mang đến trải nghiệm cà phê hoàn hảo cho bạn mỗi ngày.</p>
+                    <a href="menu">
+    <button class="btn btn-learn-more">LEARN MORE</button>
+</a>
+
                 </div>
                 <div class="col-lg-6 text-center">
                     <img src="./products/matcha.png" alt="Coffee Cup" class="coffee-cup img-fluid">
