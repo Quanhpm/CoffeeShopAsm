@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "CategoryController", urlPatterns = {"/category"})
 public class CategoryController extends HttpServlet {
-
+    //ok
     // Map để lưu trữ tên category theo ID
     private static final Map<Integer, String> CATEGORY_NAMES = new HashMap<>();
 
