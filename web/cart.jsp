@@ -25,9 +25,14 @@
             .cart-alert {
                 margin-top: 20px;
             }
+            body{
+                padding-top: 6.5%;
+            }
         </style>
     </head>
     <body>
+                <%@ include file="header.jsp" %>
+
         <div class="container mt-4">
             <h1 class="mb-4">Giỏ hàng của bạn</h1>
 

@@ -103,14 +103,17 @@
                         <div class="product-name">${product.name}</div>
                         <div class="product-price">
                             <fmt:formatNumber value="${product.price}" pattern="#,##0"/> ₫
+
+                            <!-- Button trigger modal -->
                             <a href="<c:url value="/cart?action=add&id=${product.id}&quantity=1" />">
-                                <button class="add-to-cart">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </a>
+                            <button type="button" class="add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                             </a>  
+
+
                         </div>
                     </div>
-
                 </c:forEach>
             </div>
         </div>
