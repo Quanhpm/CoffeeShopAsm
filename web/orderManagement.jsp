@@ -13,6 +13,7 @@
     <style>
         /* General Styles */
         body {
+            padding-left: 10%;
             background-color: #f5f5f7;
             color: #333;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -137,6 +138,46 @@
             margin-bottom: 15px;
             color: #adb5bd;
         }
+        
+        /* Total row styling */
+        .total-row {
+            background-color: #f0f4f8;
+            font-weight: bold;
+        }
+        
+        .total-row td {
+            border-top: 2px solid #dee2e6;
+        }
+        
+        .total-amount {
+            color: #198754;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        
+        /* Status badges */
+        .status-badge {
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-completed {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+        
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-cancelled {
+            background-color: #f8d7da;
+            color: #842029;
+        }
     </style>
 </head>
 
@@ -184,13 +225,38 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <c:set var="totalCompletedRevenue" value="0" />
+                                <c:set var="completedCount" value="0" />
                                 <c:forEach var="order" items="${orderList}">
                                     <tr>
                                         <td class="order-id">#${order.orderId}</td>
                                         <td class="price-column"><fmt:formatNumber value="${order.totalPrice}" type="currency" currencySymbol="đ" /></td>
                                         <td><fmt:formatDate value="${order.createdAt}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-                                        <td>${order.accountId}</td>
-                                        <td>${order.status}</td>
+                                        <td>${sessionscope.accountId}</td>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${order.status eq 'Completed' || order.status eq 'Delivered'}">
+                                                    <span class="status-badge status-completed">
+                                                        <i class="fas fa-check-circle me-1"></i>Completed
+                                                    </span>
+                                                    <c:set var="totalCompletedRevenue" value="${totalCompletedRevenue + order.totalPrice}" />
+                                                    <c:set var="completedCount" value="${completedCount + 1}" />
+                                                </c:when>
+                                                <c:when test="${order.status eq 'Pending'}">
+                                                    <span class="status-badge status-pending">
+                                                        <i class="fas fa-clock me-1"></i>${order.status}
+                                                    </span>
+                                                </c:when>
+                                                <c:when test="${order.status eq 'Cancelled'}">
+                                                    <span class="status-badge status-cancelled">
+                                                        <i class="fas fa-ban me-1"></i>${order.status}
+                                                    </span>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    ${order.status}
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </td>
                                         <td class="text-center action-column">
                                             <div class="btn-group">
                                                 <!-- Update Order Form -->
@@ -202,11 +268,21 @@
                                                     </button>
                                                 </form>
                                                 <!-- Delete Order Form -->
-                                       
                                             </div>
                                         </td>
                                     </tr>
                                 </c:forEach>
+                                <!-- Total Revenue Row for Completed Orders -->
+                                <tr class="total-row">
+                                    <td colspan="1" class="text-end">
+                                        <strong><i class="fas fa-check-circle me-1"></i> Tổng Doanh Thu:</strong>
+                                    </td>
+                                    <td class="total-amount">
+                                        <fmt:formatNumber value="${totalCompletedRevenue}" type="currency" currencySymbol="đ" />
+                                        <span class="badge bg-success ms-2">${completedCount} đơn</span>
+                                    </td>
+                                    <td colspan="4"></td>
+                                </tr>
                             </tbody>
                         </table>
                     </c:when>

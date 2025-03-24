@@ -163,8 +163,8 @@
         
         <!-- Social Icons -->
         <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/giahao.luong.370"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/_winson04_/"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
         </div>
         
