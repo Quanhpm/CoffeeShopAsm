@@ -48,21 +48,37 @@ public class OrderDAO {
         return list;
     }
 
-    public void create(OrderDTO order) throws SQLException, ClassNotFoundException {
+    public int create(OrderDTO order) throws SQLException, ClassNotFoundException {
         //Tạo kết nối db
         Connection con = DBUtils.getConnection();
         //Tạo đối tượng Statement
-        PreparedStatement stm = con.prepareStatement("insert Order values(?,?,?,?)");
+        PreparedStatement stm = con.prepareStatement("insert INTO [dbo].[Order] (totalPrice, status, createdAt, accountId) values(?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
         //Gán giá trị cho các tham số
         stm.setFloat(1, order.getTotalPrice());
         stm.setString(2, order.getStatus());
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         stm.setString(3, sdf.format(order.getCreatedAt()));
-        stm.setInt(4, order.getAccountId());
+        if (order.getAccountId() != 0) {
+            stm.setInt(4, order.getAccountId());
+        }else{
+            stm.setNull(4, java.sql.Types.INTEGER);
+        }
         //Thực thi lệnh sql
         int count = stm.executeUpdate();
+        ResultSet rs = null;
+        if (count > 0) {
+            rs = stm.getGeneratedKeys();
+
+            if (rs.next()) {
+                
+                int id = rs.getInt(1); // Lấy ID vừa tạo 
+                con.close();
+                return id;
+            }
+        }
         //Đóng kết nối db
         con.close();
+        return 0;
     }
 
     public void delete(int id) throws SQLException, ClassNotFoundException {
@@ -121,4 +137,5 @@ public class OrderDAO {
         //Đóng kết nối db
         con.close();
     }
+
 }
