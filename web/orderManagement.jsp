@@ -232,7 +232,7 @@
                                         <td class="order-id">#${order.orderId}</td>
                                         <td class="price-column"><fmt:formatNumber value="${order.totalPrice}" type="currency" currencySymbol="đ" /></td>
                                         <td><fmt:formatDate value="${order.createdAt}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-                                        <td>${sessionscope.accountId}</td>
+                                        <td>${sessionScope.accountId}</td>
                                         <td>
                                             <c:choose>
                                                 <c:when test="${order.status eq 'Completed' || order.status eq 'Delivered'}">

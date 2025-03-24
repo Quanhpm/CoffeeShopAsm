@@ -59,7 +59,7 @@
         <p class="text-muted">* indicates required field</p>
         <form action="register" method="POST">
             <div class="mb-3 text-start">
-                <label class="form-label">* Username or email address</label>
+                <label class="form-label">* Username </label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username or email" required>
             </div>
             <div class="mb-3 text-start">
