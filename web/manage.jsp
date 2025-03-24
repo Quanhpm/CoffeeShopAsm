@@ -13,6 +13,7 @@
     <style>
         /* General Styles */
         body {
+            padding-left: 10%;
             background-color: #f5f5f7;
             color: #333;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

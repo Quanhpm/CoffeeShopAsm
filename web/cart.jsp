@@ -140,7 +140,7 @@
                         </a>
                     </div>
                     <div class="col-md-6 text-right">
-                        <a href="${pageContext.request.contextPath}/checkout" class="btn btn-success">
+                        <a href="${pageContext.request.contextPath}/checkout?accountId=${sessionScope.accountId}" class="btn btn-success">
                             <i class="fas fa-shopping-cart"></i> Thanh toán
                         </a>
                     </div>

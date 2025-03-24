@@ -12,14 +12,14 @@ package dto;
 public class OrderDetailDTO {
     private int orderDetailId;
     private int orderId;
-    private ProductDTO productId;
+    private int productId;
     private int quantity;
-    private ProductDTO price;
+    private double price;
 
     public OrderDetailDTO() {
     }
 
-    public OrderDetailDTO(int orderDetailId, int orderId, ProductDTO productId, int quantity, ProductDTO price) {
+    public OrderDetailDTO(int orderDetailId, int orderId, int productId, int quantity, double price) {
         this.orderDetailId = orderDetailId;
         this.orderId = orderId;
         this.productId = productId;
@@ -43,11 +43,11 @@ public class OrderDetailDTO {
         this.orderId = orderId;
     }
 
-    public ProductDTO getProductId() {
+    public int getProductId() {
         return productId;
     }
 
-    public void setProductId(ProductDTO productId) {
+    public void setProductId(int productId) {
         this.productId = productId;
     }
 
@@ -59,11 +59,11 @@ public class OrderDetailDTO {
         this.quantity = quantity;
     }
 
-    public ProductDTO getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(ProductDTO price) {
+    public void setPrice(double price) {
         this.price = price;
     }
     
