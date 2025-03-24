@@ -70,7 +70,10 @@ public class CheckoutController extends HttpServlet {
                 orderDetailDTO.setQuantity(item.getQuantity());
                 orderDetailDTO.setPrice(item.getCost());
                 orderDetailDTO.setProductId(item.getProduct().getId());
-                orderDetailDAO.create(orderDetailDTO);
+                orderDetailDAO.create(orderDetailDTO);//hi
+                
+                
+                
             }
             request.getRequestDispatcher("checkout.jsp").forward(request, response);
 
