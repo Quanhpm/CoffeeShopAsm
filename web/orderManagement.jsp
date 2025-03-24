@@ -202,13 +202,7 @@
                                                     </button>
                                                 </form>
                                                 <!-- Delete Order Form -->
-                                                <form action="manager" method="POST">
-                                                    <input type="hidden" name="action" value="delete"/>
-                                                    <input type="hidden" name="orderId" value="${order.orderId}"/>
-                                                    <button type="submit" class="btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa đơn hàng này?');">
-                                                        <i class="fas fa-trash-alt me-1"></i> Xóa
-                                                    </button>
-                                                </form>
+                                       
                                             </div>
                                         </td>
                                     </tr>

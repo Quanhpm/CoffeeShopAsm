@@ -8,31 +8,31 @@
 <!DOCTYPE html>
 <html>
     <head>
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-iconsicons.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Passio Coffee</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
         <style>
             :root {
                 --passio-green: #1e7145;
                 --passio-green-light: #2a8d58;
                 --passio-green-dark: #165c36;
             }
-            
+
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 overflow-x: hidden;
                 color: #333;
             }
-            
+
             .section-title {
                 font-weight: 800;
                 margin-bottom: 1.5rem;
                 position: relative;
                 display: inline-block;
             }
-            
+
             .section-title::after {
                 content: '';
                 position: absolute;
@@ -43,12 +43,12 @@
                 left: 0;
                 border-radius: 2px;
             }
-            
+
             .featured-products {
                 padding: 80px 0;
                 background-color: #f8f9fa;
             }
-            
+
             .product-card {
                 background: white;
                 border-radius: 15px;
@@ -58,23 +58,23 @@
                 margin-bottom: 30px;
                 border: none;
             }
-            
+
             .product-card:hover {
                 transform: translateY(-10px);
                 box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             }
-            
+
             .product-img {
                 height: 200px;
                 object-fit: cover;
             }
-            
+
             .product-price {
                 color: var(--passio-green);
                 font-weight: 700;
                 font-size: 1.2rem;
             }
-            
+
             .btn-order {
                 background-color: var(--passio-green);
                 color: white;
@@ -84,33 +84,33 @@
                 border: none;
                 transition: all 0.3s ease;
             }
-            
+
             .btn-order:hover {
                 background-color: var(--passio-green-dark);
                 color: white;
             }
-            
+
             .about-section {
                 padding: 80px 0;
                 position: relative;
                 overflow: hidden;
             }
-            
+
             .about-img {
                 border-radius: 15px;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             }
-            
+
             .about-text {
                 line-height: 1.8;
             }
-            
+
             .testimonials {
                 padding: 80px 0;
                 background-color: #f8f9fa;
                 position: relative;
             }
-            
+
             .testimonial-card {
                 background: white;
                 border-radius: 15px;
@@ -119,7 +119,7 @@
                 margin: 20px 10px;
                 position: relative;
             }
-            
+
             .testimonial-card::before {
                 content: '"';
                 position: absolute;
@@ -130,7 +130,7 @@
                 font-family: Georgia, serif;
                 line-height: 1;
             }
-            
+
             .customer-img {
                 width: 60px;
                 height: 60px;
@@ -138,77 +138,77 @@
                 object-fit: cover;
                 margin-right: 15px;
             }
-            
+
             .customer-info {
                 display: flex;
                 align-items: center;
                 margin-top: 20px;
             }
-            
+
             .customer-name {
                 font-weight: 600;
                 margin-bottom: 0;
             }
-            
+
             .customer-title {
                 color: #777;
                 font-size: 0.9rem;
             }
-            
+
             .contact-section {
                 padding: 80px 0;
                 background-color: white;
             }
-            
+
             .contact-info {
                 margin-bottom: 30px;
             }
-            
+
             .contact-icon {
                 color: var(--passio-green);
                 font-size: 1.5rem;
                 margin-right: 15px;
             }
-            
+
             .map-container {
                 height: 300px;
                 border-radius: 15px;
                 overflow: hidden;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             }
-            
+
             .footer {
                 background-color: var(--passio-green-dark);
                 color: white;
                 padding: 40px 0 20px;
             }
-            
+
             .footer-logo {
                 font-size: 1.8rem;
                 font-weight: 800;
                 margin-bottom: 20px;
             }
-            
+
             .footer-links {
                 list-style: none;
                 padding-left: 0;
             }
-            
+
             .footer-links li {
                 margin-bottom: 10px;
             }
-            
+
             .footer-links a {
                 color: rgba(255,255,255,0.8);
                 text-decoration: none;
                 transition: all 0.3s ease;
             }
-            
+
             .footer-links a:hover {
                 color: white;
                 padding-left: 5px;
             }
-            
+
             .social-links a {
                 color: white;
                 background: rgba(255,255,255,0.1);
@@ -221,12 +221,12 @@
                 margin-right: 10px;
                 transition: all 0.3s ease;
             }
-            
+
             .social-links a:hover {
                 background: rgba(255,255,255,0.2);
                 transform: translateY(-3px);
             }
-            
+
             .copyright {
                 border-top: 1px solid rgba(255,255,255,0.1);
                 padding-top: 20px;
@@ -239,7 +239,8 @@
     <body>
         <%@ include file="header.jsp" %>
         <%@ include file="banner.jsp" %>
-        
+
+
         <!-- Featured Products Section -->
         <section class="featured-products">
             <div class="container">
@@ -247,7 +248,7 @@
                     <h2 class="section-title">Sản Phẩm Nổi Bật</h2>
                     <p class="text-muted">Khám phá những thức uống đặc biệt của chúng tôi</p>
                 </div>
-                
+
                 <div class="row">
                     <!-- Product 1 -->
                     <div class="col-md-6 col-lg-3">
@@ -262,7 +263,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Product 2 -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card product-card">
@@ -276,7 +277,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Product 3 -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card product-card">
@@ -290,7 +291,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Product 4 -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card product-card">
@@ -307,7 +308,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- About Section -->
         <section class="about-section">
             <div class="container">
@@ -324,7 +325,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Testimonials Section -->
         <section class="testimonials">
             <div class="container">
@@ -332,7 +333,7 @@
                     <h2 class="section-title">Khách Hàng Nói Gì</h2>
                     <p class="text-muted">Những trải nghiệm thực tế từ khách hàng của chúng tôi</p>
                 </div>
-                
+
                 <div class="row">
                     <!-- Testimonial 1 -->
                     <div class="col-md-6 col-lg-4">
@@ -347,7 +348,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Testimonial 2 -->
                     <div class="col-md-6 col-lg-4">
                         <div class="testimonial-card">
@@ -361,7 +362,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Testimonial 3 -->
                     <div class="col-md-6 col-lg-4">
                         <div class="testimonial-card">
@@ -378,7 +379,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Contact Section -->
         <section class="contact-section">
             <div class="container">
@@ -386,7 +387,7 @@
                     <h2 class="section-title">Liên Hệ</h2>
                     <p class="text-muted">Ghé thăm hoặc liên hệ với chúng tôi</p>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-lg-4 mb-4 mb-lg-0">
                         <div class="contact-info d-flex align-items-start">
@@ -396,7 +397,7 @@
                                 <p>Đại Học FPT Thành Phố Hồ Chí Minh</p>
                             </div>
                         </div>
-                        
+
                         <div class="contact-info d-flex align-items-start">
                             <i class="fas fa-phone-alt contact-icon"></i>
                             <div>
@@ -404,7 +405,7 @@
                                 <p>0918 430 153</p>
                             </div>
                         </div>
-                        
+
                         <div class="contact-info d-flex align-items-start">
                             <i class="fas fa-envelope contact-icon"></i>
                             <div>
@@ -412,7 +413,7 @@
                                 <p>quocanhdang02@gmail.com</p>
                             </div>
                         </div>
-                        
+
                         <div class="contact-info d-flex align-items-start">
                             <i class="fas fa-clock contact-icon"></i>
                             <div>
@@ -421,66 +422,19 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-8">
                         <div class="map-container">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9320.05621438263!2d106.81242462399683!3d10.841820847122925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752731176b07b1%3A0xb752b24b379bae5e!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBGUFQgVFAuIEhDTQ!5e0!3m2!1svi!2s!4v1742743649592!5m2!1svi!2s" width="900" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                        </div>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9320.05621438263!2d106.81242462399683!3d10.841820847122925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752731176b07b1%3A0xb752b24b379bae5e!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBGUFQgVFAuIEhDTQ!5e0!3m2!1svi!2s!4v1742743649592!5m2!1svi!2s" width="900" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 mb-4 mb-lg-0">
-                        <h3 class="footer-logo">PASSIO</h3>
-                        <p>Không chỉ là cà phê, đó là trải nghiệm.</p>
-                        <div class="social-links mt-4">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                    
-                    <div class="col-6 col-lg-2 mb-4 mb-lg-0">
-                        <h5>Thông Tin</h5>
-                        <ul class="footer-links">
-                            <li><a href="#">Về chúng tôi</a></li>
-                            <li><a href="#">Sản phẩm</a></li>
-                            <li><a href="#">Khuyến mãi</a></li>
-                            <li><a href="#">Cửa hàng</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="col-6 col-lg-2 mb-4 mb-lg-0">
-                        <h5>Hỗ Trợ</h5>
-                        <ul class="footer-links">
-                            <li><a href="#">Liên hệ</a></li>
-                            <li><a href="#">FAQs</a></li>
-                            <li><a href="#">Đặt hàng</a></li>
-                            <li><a href="#">Giao hàng</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="col-lg-4">
-                        <h5>Đăng Ký Nhận Tin</h5>
-                        <p>Nhận thông tin khuyến mãi và cập nhật mới nhất</p>
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="Email của bạn" aria-label="Email của bạn">
-                            <button class="btn btn-outline-light" type="button">Đăng Ký</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="text-center copyright">
-                    <p>&copy; 2025 Passio Coffee. Tất cả quyền được bảo lưu.</p>
-                </div>
-            </div>
-        </footer>
-        
+                <%@ include file="footer.jsp" %>
+
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

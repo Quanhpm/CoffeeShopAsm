@@ -90,7 +90,6 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item"><a class="nav-link" href="home.jsp">Home</a></li>
                         <li class="nav-item"><a href="${pageContext.request.contextPath}/category?categoryId=0" class="nav-link">Menu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Gift Cards</a></li>
                     </ul>
 
                     <!-- Search Form -->

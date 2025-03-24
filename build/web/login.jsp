@@ -91,7 +91,6 @@
                 </form>
                 <div class="mt-3">
                     <p class="register">Don't have an account ? <a href="register.jsp">Register</a></p>
-                    <a href="#" class="forgot-password">Forgot your password?</a>
                 </div>
             </div>
 
