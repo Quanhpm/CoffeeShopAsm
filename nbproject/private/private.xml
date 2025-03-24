@@ -5,63 +5,22 @@
             <url>web/menu.jsp</url>
             <bookmark id="1">
                 <name/>
-                <line>154</line>
+                <line>137</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/web/banner.jsp</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/controllers/SearchController.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/dto/OrderDetailDTO.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/web/error.jsp</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/web/header.jsp</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/web/menu.jsp</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/controllers/ManagerController.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/web/cart.jsp</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/controllers/MainController.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/controllers/SortController.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/dto/OrderDTO.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/web/updateProduct.jsp</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/dao/ProductDAO.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/dto/DescriptionDTO.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/web/manage.jsp</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/controllers/RegisterController.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/dto/Item.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/controllers/CategoryController.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/controllers/LoginController.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/controllers/CartController.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/dto/ProductDTO.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/dao/AccountDAO.java</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/web/register.jsp</file>
-            <file>file:/D:/FPT.Subject/Ki4/PRJ/CoffeeShopAsm/src/java/controllers/LogoutController.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/dto/OrderDTO.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/web/updateOrder.jsp</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/controllers/LogoutController.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/controllers/MainController.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/controllers/LoginController.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/dao/OrderDAO.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/web/orderManagement.jsp</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/controllers/CategoryController.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/dto/AccountDTO.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/web/login.jsp</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/dto/DescriptionDTO.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/dao/AccountDAO.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/controllers/RegisterController.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/controllers/CartController.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/dto/ProductDTO.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/controllers/ManagerController.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/dto/OrderDetailDTO.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/dao/ProductDAO.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/controllers/ProductListController.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/controllers/SearchController.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/web/manage.jsp</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/web/cart.jsp</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/controllers/SortController.java</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/web/menuAdmin.jsp</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/web/updateProduct.jsp</file>
-            <file>file:/E:/PRJ301/CoffeeShopAsm/src/java/controllers/OrderController.java</file>
+            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/web/updateOrder.jsp</file>
+            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/web/banner.jsp</file>
+            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/src/java/controllers/CartController.java</file>
+            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/src/java/controllers/OrderController.java</file>
+            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/src/java/controllers/CategoryController.java</file>
+            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/web/cart.jsp</file>
+            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/web/menu.jsp</file>
+            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/src/java/controllers/LoginController.java</file>
+            <file>file:/C:/FPTU/SP25/PRJ-FunnyCode/CoffeeShopAsm/web/home.jsp</file>
         </group>
     </open-files>
 </project-private>
