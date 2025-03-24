@@ -75,7 +75,7 @@
                 <p class="text-muted">* indicates required field</p>
                 <form action="MainController" method="post">
                     <div class="mb-3 text-start">
-                        <label class="form-label">* Username or email address</label>
+                        <label class="form-label">* Username </label>
                         <input class="form-control" placeholder="Enter your username or email" name="userName" type="text" value="<%= usernameCookieSaved%>" required>
                     </div>
                     <div class="mb-3 text-start">
