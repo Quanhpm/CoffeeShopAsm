@@ -1,5 +1,6 @@
 package controllers;
 
+import com.google.gson.Gson;
 import dao.OrderDAO;
 import dao.ProductDAO;
 import dto.ProductDTO;
@@ -58,7 +59,10 @@ public class ManagerController extends HttpServlet {
             request.getRequestDispatcher("menuAdmin.jsp").forward(request, response);
             }else if("order".equals(page)){
                 List<OrderDTO> orderList = orderDAO.select();
-            request.setAttribute("orderList", orderList);
+                            Gson gson = new Gson();
+                String orderListJson = gson.toJson(orderList);
+                request.setAttribute("orderList", orderList);
+                    request.setAttribute("orderListJson", orderListJson);
             request.setAttribute("page", "orderManagement.jsp");
             request.getRequestDispatcher("menuAdmin.jsp").forward(request, response);
             }

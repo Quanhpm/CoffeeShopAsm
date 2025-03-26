@@ -49,7 +49,8 @@ public class CheckoutController extends HttpServlet {
             Cart cart = (Cart) session.getAttribute("cart");
             OrderDTO orderDTO = new OrderDTO();
             OrderDAO orderDAO = new OrderDAO();
-            orderDTO.setCreatedAt(new Date());
+            Date date = new Date();
+            orderDTO.setCreatedAt(date);
             AccountDTO accountDTO = (AccountDTO) session.getAttribute("user");
             if (accountDTO != null) {
                 orderDTO.setAccountId(accountDTO.getAccountId());
@@ -70,11 +71,13 @@ public class CheckoutController extends HttpServlet {
                 orderDetailDTO.setQuantity(item.getQuantity());
                 orderDetailDTO.setPrice(item.getCost());
                 orderDetailDTO.setProductId(item.getProduct().getId());
-                orderDetailDAO.create(orderDetailDTO);//hi
+                orderDetailDAO.create(orderDetailDTO);
                 
                 
                 
             }
+            
+            session.removeAttribute("cart");
             request.getRequestDispatcher("checkout.jsp").forward(request, response);
 
         } catch (SQLException ex) {

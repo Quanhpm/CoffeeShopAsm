@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import utils.DBUtils;
 
@@ -38,7 +39,8 @@ public class OrderDAO {
             order.setOrderId(rs.getInt("orderId"));
             order.setTotalPrice(rs.getFloat("totalPrice"));
             order.setStatus(rs.getString("status"));
-            order.setCreatedAt(rs.getDate("createdAt"));
+            Date date = rs.getTimestamp("createdAt");
+            order.setCreatedAt(date);
             order.setAccountId(rs.getInt("accountId"));
             //Thêm toy vào list
             list.add(order);
@@ -56,7 +58,7 @@ public class OrderDAO {
         //Gán giá trị cho các tham số
         stm.setFloat(1, order.getTotalPrice());
         stm.setString(2, order.getStatus());
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         stm.setString(3, sdf.format(order.getCreatedAt()));
         if (order.getAccountId() != 0) {
             stm.setInt(4, order.getAccountId());
@@ -129,7 +131,7 @@ public class OrderDAO {
         //Gán giá trị cho các tham số
         stm.setFloat(1, order.getTotalPrice());
         stm.setString(2, order.getStatus());
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         stm.setString(3, sdf.format(order.getCreatedAt()));
         stm.setInt(4, order.getOrderId());
         //Thực thi lệnh sql

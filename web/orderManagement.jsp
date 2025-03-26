@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for the chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* General Styles */
         body {
@@ -39,6 +41,13 @@
             font-weight: 600;
         }
 
+        /* Chart Styles */
+        .chart-container {
+            margin-top: 30px;
+            width: 100%;
+            height: 400px;
+        }
+
         /* Table Styles */
         .table-container {
             background-color: #fff;
@@ -46,11 +55,6 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             overflow: hidden;
             margin-bottom: 30px;
-        }
-
-        .order-table {
-            width: 100%;
-            margin-bottom: 0;
         }
 
         .order-table th {
@@ -74,115 +78,20 @@
             background-color: #f8f9fa;
             transition: background-color 0.2s ease;
         }
-
-        .order-id {
-            font-weight: 600;
-            color: #495057;
-        }
-
-        .price-column {
-            color: #0d6efd;
-            font-weight: 500;
-        }
-
-        /* Button Styles */
-        .btn-update {
-            background-color: #0d6efd;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 14px;
-            transition: all 0.2s ease;
-        }
-
-        .btn-update:hover {
-            background-color: #0b5ed7;
-            transform: translateY(-1px);
-        }
-
-        .btn-delete {
-            background-color: #dc3545;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 14px;
-            transition: all 0.2s ease;
-        }
-
-        .btn-delete:hover {
-            background-color: #c82333;
-            transform: translateY(-1px);
-        }
-
-        .action-column {
-            width: 220px;
-            text-align: center;
-        }
-
-        .btn-group form {
-            display: inline-block;
-            margin-right: 5px;
-        }
-
-        /* Empty state */
-        .empty-state {
-            text-align: center;
-            padding: 40px 20px;
-            color: #6c757d;
-        }
-
-        .empty-state i {
-            font-size: 48px;
-            margin-bottom: 15px;
-            color: #adb5bd;
-        }
-        
-        /* Total row styling */
-        .total-row {
-            background-color: #f0f4f8;
-            font-weight: bold;
-        }
-        
-        .total-row td {
-            border-top: 2px solid #dee2e6;
-        }
-        
-        .total-amount {
-            color: #198754;
-            font-size: 16px;
-            font-weight: 700;
-        }
-        
-        /* Status badges */
-        .status-badge {
-            padding: 6px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        
-        .status-completed {
-            background-color: #d1e7dd;
-            color: #0f5132;
-        }
-        
-        .status-pending {
-            background-color: #fff3cd;
-            color: #856404;
-        }
-        
-        .status-cancelled {
-            background-color: #f8d7da;
-            color: #842029;
-        }
     </style>
 </head>
 
 <body>
     <div class="page-container">
+        <!-- Page Header -->
+        <div class="section-header">
+            <h1 class="section-title">
+                <i class="fas fa-boxes me-2"></i>Quản Lý Đơn Hàng
+            </h1>
+        </div>
+
+        <!-- Order List Section -->
+      <div class="page-container">
         <!-- Page Header -->
         <div class="section-header">
             <h1 class="section-title">
@@ -232,7 +141,7 @@
                                         <td class="order-id">#${order.orderId}</td>
                                         <td class="price-column"><fmt:formatNumber value="${order.totalPrice}" type="currency" currencySymbol="đ" /></td>
                                         <td><fmt:formatDate value="${order.createdAt}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-                                        <td>${sessionScope.accountId}</td>
+                                        <td>${order.accountId}</td>
                                         <td>
                                             <c:choose>
                                                 <c:when test="${order.status eq 'Completed' || order.status eq 'Delivered'}">
@@ -297,6 +206,67 @@
             </div>
         </div>
     </div>
+
+        <!-- Chart Container -->
+        <div class="chart-container">
+            <canvas id="revenueChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            // Convert Java List to JSON and assign to JavaScript variable
+            var orderList = ${orderListJson}; // The JSON object passed from JSTL
+
+            // Process the data to accumulate revenue by date
+            let dailyRevenue = {};
+
+            orderList.forEach(order => {
+                // Extract date and total price from each order
+                let orderDate = new Date(order.createdAt).toLocaleDateString(); // Format to just the date (no time)
+                let orderPrice = order.totalPrice;
+
+                if (!dailyRevenue[orderDate]) {
+                    dailyRevenue[orderDate] = 0;
+                }
+
+                dailyRevenue[orderDate] += orderPrice;
+            });
+
+            // Extract the dates and revenue values for the chart
+            let dates = Object.keys(dailyRevenue);
+            let revenues = Object.values(dailyRevenue);
+
+            // Create the chart
+            let ctx = document.getElementById('revenueChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar', // Using 'bar' chart to show data in columns
+                data: {
+                    labels: dates,
+                    datasets: [{
+                        label: 'Doanh Thu Theo Ngày',
+                        data: revenues,
+                        backgroundColor: '#0d6efd', // Column color
+                        borderColor: '#0d6efd',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value.toLocaleString() + ' đ'; // Format currency
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        };
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
